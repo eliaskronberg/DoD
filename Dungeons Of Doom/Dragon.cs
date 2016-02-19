@@ -13,6 +13,10 @@ namespace Dungeons_Of_Doom
 
         }
 
+        internal void Fight()
+        {
+
+        }
         
     }
 }

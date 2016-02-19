@@ -21,7 +21,7 @@ namespace Dungeons_Of_Doom
         public int Health { get; set; }
         public int AttackDamage { get; set; }
         public int Armor { get; set; }
-        public virtual void Fight(Character oponent)
+        internal virtual void Fight(Character oponent)
         {
             while(Health>0 && oponent.Health > 0)
             {
