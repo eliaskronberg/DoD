@@ -80,7 +80,13 @@ namespace Dungeons_Of_Doom
                         case "y":
                             player.Fight(world[x, y].MonsterInRoom);
                             if (player.Status == "Dead")
-                                GameOver();
+                            {
+                                GameOver();   
+                            }
+                            else
+                            {
+                                world[x, y].MonsterInRoom = null;
+                            }
                             loop = false;
                             
                             break;
