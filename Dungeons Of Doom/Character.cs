@@ -28,7 +28,7 @@ namespace Dungeons_Of_Doom
                 oponent.Health -= AttackDamage;
                 Health -= oponent.AttackDamage;
             }
-            if (Health < 0)
+            if (Health <= 0)
             {
                 Status = "Dead";
             }
