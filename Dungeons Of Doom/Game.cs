@@ -8,12 +8,10 @@ namespace Dungeons_Of_Doom
 {
     class Game
     {
-        #region Const
         const int WorldWidth = 20;
         const int WorldHeight = 10;
         Player player;
         Room[,] world;
-        #endregion
         public void Start()
         {
             CreatePlayer();
@@ -71,7 +69,8 @@ namespace Dungeons_Of_Doom
         {
             if (world[x, y].MonsterInRoom != null)
             {
-                Console.WriteLine($"Encountered a {world[x, y].MonsterInRoom.Name}!");
+                Monster monster = world[x, y].MonsterInRoom;
+                Console.WriteLine($"Encountered a {monster.Name}!");
                 Console.WriteLine($"Fight it? (y/n)");
                 bool loop = true;
                 do
@@ -80,22 +79,24 @@ namespace Dungeons_Of_Doom
                     switch (key)
                     {
                         case "y":
-                            player.Fight(world[x, y].MonsterInRoom);
+                            Fight(player, monster);
+                            
+                            
                             if (player.Status == "Dead")
                             {
-                                GameOver();
+                                GameOver();   
                             }
                             else
                             {
                                 world[x, y].MonsterInRoom = null;
                             }
                             loop = false;
-
+                            
                             break;
                         case "n":
                             Flee();
                             loop = false;
-
+                            
                             break;
                         default:
                             Console.WriteLine("what do you mean, fool?");
@@ -112,7 +113,7 @@ namespace Dungeons_Of_Doom
                 {
                     player.BackPack.Add(world[x, y].ItemInRoom);
                     player.Capacity -= world[x, y].ItemInRoom.Weight;
-                    Console.WriteLine($"You found a {world[x, y].ItemInRoom.Name}");
+                    Console.WriteLine($"You found a {world[x,y].ItemInRoom.Name}");
                     System.Threading.Thread.Sleep(2000);
                     world[x, y].ItemInRoom = null;
 
@@ -133,14 +134,14 @@ namespace Dungeons_Of_Doom
             Console.WriteLine("Live to fight another day....coward");
         }
 
-        private void Fight(int x, int y)
+        private void Fight(Character player, Character monster)
         {
-
+            
             bool loop = true;
             do
             {
                 Console.Clear();
-                Console.WriteLine($"Player HP = {player.Health}                    {world[x, y].MonsterInRoom.Name} HP = {world[x, y].MonsterInRoom.Health}");
+                Console.WriteLine($"Player HP = {player.Health}                    {monster.Name} HP = {monster.Health}");
                 Console.WriteLine("Attack: A, Run: R");
                 string key = Console.ReadLine();
                 switch (key)
@@ -148,7 +149,7 @@ namespace Dungeons_Of_Doom
                     case "a":
                         Console.Clear();
                         Console.WriteLine("take that you Beast!!");
-
+                        
                         break;
                     case "r":
                         Flee();
@@ -169,7 +170,7 @@ namespace Dungeons_Of_Doom
         }
         private void CreatePlayer()
         {
-            player = new Player("Player", 100, 10, 10, "Alive", 10);
+            player = new Player("Player", 100, 10, 10,"Alive",10);
         }
 
         private void CreateWorld()
@@ -183,13 +184,13 @@ namespace Dungeons_Of_Doom
                     world[x, y] = new Room();
                     int newMonster = random.Next(1, 11);
                     if (newMonster == 3)
-                        world[x, y].MonsterInRoom = new Monster("Mud Golem", 50, 3, 1, "Alive");
+                        world[x, y].MonsterInRoom = new Monster("Mud Golem", 50, 3,1,"Alive");
                 }
-
+                 
             }
-            world[2, 2].MonsterInRoom = new Monster("Ozma", 1000, 50, 15, "Almighty");
-            world[3, 3].ItemInRoom = new Item("Great Sword", 2, 5, 0, 0, false);
-            world[4, 3].ItemInRoom = new Item("Giant Sword", 10, 8, 0, 0, false);
+            world[2, 2].MonsterInRoom = new Monster("Ozma", 1000, 50,15,"Almighty");
+            world[3, 3].ItemInRoom = new Weapon("Great Sword", "Sword", 2, false, 5);
+            world[4, 3].ItemInRoom = new Weapon("Giant Sword","Sword", 10,false,2);
 
         }
         private void DisplayWorld()
