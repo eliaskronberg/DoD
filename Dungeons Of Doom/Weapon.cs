@@ -14,5 +14,10 @@ namespace Dungeons_Of_Doom
         }
 
         public int Damage { get; set; }
+
+        public override void Pickup()
+        {
+            
+        }
     }
 }

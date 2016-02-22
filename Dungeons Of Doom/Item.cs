@@ -18,6 +18,18 @@ namespace Dungeons_Of_Doom
         public int Weight { get; set; }
         public bool Consumable { get; set; }
         public string Type { get; set; }
+    
+        //public virtual void Pickup(Character character)
+        //{
+        //    Console.WriteLine($"You have found {this.Name}!");
+        //    Console.Write($"Do you want to pick up {this.Name}?");
+        //    string key = Console.ReadLine();
+        //    switch (key)
+        //    {
+        //        case"Y": break;
+        //    }
+        //}
+
 
     }
 }

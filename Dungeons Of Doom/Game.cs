@@ -116,7 +116,6 @@ namespace Dungeons_Of_Doom
                     Console.WriteLine($"You found a {world[x,y].ItemInRoom.Name}");
                     System.Threading.Thread.Sleep(2000);
                     world[x, y].ItemInRoom = null;
-
                 }
                 else
                 {
