@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dungeons_Of_Doom
 {
-    class Item:GameObject
+    abstract class Item:GameObject
     {
         public Item(string name, string type,int weight, bool consumable):base(name)
         {

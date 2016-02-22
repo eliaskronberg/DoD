@@ -23,17 +23,7 @@ namespace Dungeons_Of_Doom
         public int Armor { get; set; }
         internal virtual void Fight(Character oponent)
         {
-            while(Health>0 && oponent.Health > 0)
-            {
-                oponent.Health -= AttackDamage;
-                Health -= oponent.AttackDamage;
-            }
-            if (Health < 0)
-            {
-                Status = "Dead";
-            }
-                
-
+            oponent.Health -= AttackDamage;
         }
 
     }

@@ -69,7 +69,8 @@ namespace Dungeons_Of_Doom
         {
             if (world[x, y].MonsterInRoom != null)
             {
-                Console.WriteLine($"Encountered a {world[x,y].MonsterInRoom.Name}!");
+                Monster monster = world[x, y].MonsterInRoom;
+                Console.WriteLine($"Encountered a {monster.Name}!");
                 Console.WriteLine($"Fight it? (y/n)");
                 bool loop = true;
                 do
@@ -78,7 +79,9 @@ namespace Dungeons_Of_Doom
                     switch (key)
                     {
                         case "y":
-                            player.Fight(world[x, y].MonsterInRoom);
+                            Fight(player, monster);
+                            
+                            
                             if (player.Status == "Dead")
                             {
                                 GameOver();   
@@ -131,14 +134,14 @@ namespace Dungeons_Of_Doom
             Console.WriteLine("Live to fight another day....coward");
         }
 
-        private void Fight(int x, int y)
+        private void Fight(Character player, Character monster)
         {
             
             bool loop = true;
             do
             {
                 Console.Clear();
-                Console.WriteLine($"Player HP = {player.Health}                    {world[x,y].MonsterInRoom.Name} HP = {world[x, y].MonsterInRoom.Health}");
+                Console.WriteLine($"Player HP = {player.Health}                    {monster.Name} HP = {monster.Health}");
                 Console.WriteLine("Attack: A, Run: R");
                 string key = Console.ReadLine();
                 switch (key)
@@ -186,8 +189,8 @@ namespace Dungeons_Of_Doom
                  
             }
             world[2, 2].MonsterInRoom = new Monster("Ozma", 1000, 50,15,"Almighty");
-            world[3, 3].ItemInRoom = new Item("Great Sword", 2,5,0,0,false);
-            world[4, 3].ItemInRoom = new Item("Giant Sword", 10,8,0,0,false);
+            world[3, 3].ItemInRoom = new Weapon("Great Sword", "Sword", 2, false, 5);
+            world[4, 3].ItemInRoom = new Weapon("Giant Sword","Sword", 10,false,2);
 
         }
         private void DisplayWorld()

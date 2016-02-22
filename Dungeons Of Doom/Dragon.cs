@@ -13,9 +13,10 @@ namespace Dungeons_Of_Doom
 
         }
 
-        internal void Fight()
+        internal override void Fight(Character oponent)
         {
-
+            Console.WriteLine("Grrrr");
+            oponent.Health -= AttackDamage;
         }
         
     }
