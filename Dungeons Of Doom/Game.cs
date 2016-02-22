@@ -80,16 +80,8 @@ namespace Dungeons_Of_Doom
                     {
                         case "y":
                             Fight(player, monster);
-                            
-                            
-                            if (player.Status == "Dead")
-                            {
-                                GameOver();   
-                            }
-                            else
-                            {
+                            if (world[x, y].MonsterInRoom.Health <= 0)
                                 world[x, y].MonsterInRoom = null;
-                            }
                             loop = false;
                             
                             break;
@@ -146,12 +138,34 @@ namespace Dungeons_Of_Doom
                 switch (key)
                 {
                     case "a":
-                        Console.Clear();
-                        Console.WriteLine("take that you Beast!!");
-                        
+                        player.Fight(monster);
+                        Console.WriteLine($"take that you Beast!!");
+                        Console.WriteLine($"{monster.Name} lost {player.AttackDamage} HP!");
+                        monster.Fight(player);
+                        Console.WriteLine($"{monster.Name} hit you for {monster.AttackDamage} HP!");
+                        Console.WriteLine("press any key...");
+                        Console.ReadKey();
+                        if (player.Health<=0)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Not liike thiiis");
+                            Console.WriteLine("You died a horrible death");
+                            Console.WriteLine("press any key");
+                            Console.ReadKey();
+                            GameOver();
+                            loop = false;
+                        }
+                        else if(monster.Health<=0)
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"You slayed the {monster.Name}, good job!");
+                            Console.WriteLine("press any key...");
+                            Console.ReadKey();
+                            loop = false;
+                        }
                         break;
                     case "r":
-                        Flee();
+                        
                         loop = false;
                         break;
                     default:
@@ -183,7 +197,9 @@ namespace Dungeons_Of_Doom
                     world[x, y] = new Room();
                     int newMonster = random.Next(1, 11);
                     if (newMonster == 3)
-                        world[x, y].MonsterInRoom = new Monster("Mud Golem", 50, 3,1,"Alive");
+                        world[x, y].MonsterInRoom = new Goblin("Goblin", 50, 3, 1, "Alive");
+                    else if (newMonster == 5)
+                        world[x, y].MonsterInRoom = new Dragon("Dragon", 65, 8, 10, "Angry");
                 }
                  
             }
@@ -210,8 +226,8 @@ namespace Dungeons_Of_Doom
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
 
-                        Monster monster = room.MonsterInRoom;
-                        Console.Write('M');
+                       // Monster monster = room.MonsterInRoom;
+                        Console.Write(room.MonsterInRoom.Name.Substring(0,1));
                         Console.ForegroundColor = ConsoleColor.White;
 
                     }
