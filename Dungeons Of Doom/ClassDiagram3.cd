@@ -14,11 +14,11 @@
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dungeons_Of_Doom.Dragon" Collapsed="true">
+  <Class Name="Dungeons_Of_Doom.Goblin" Collapsed="true">
     <Position X="5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Dragon.cs</FileName>
+      <FileName>Goblin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Dungeons_Of_Doom.Rat" Collapsed="true">
@@ -26,13 +26,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameCharacters\Monsters\Rat.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Dungeons_Of_Doom.Item" Collapsed="true">
-    <Position X="7.25" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>Item.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Dungeons_Of_Doom.Program" Collapsed="true">
@@ -68,6 +61,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dungeons_Of_Doom.Item" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Item.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
