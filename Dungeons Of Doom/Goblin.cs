@@ -16,7 +16,10 @@ namespace Dungeons_Of_Doom
         internal override void Fight(Character oponent)
         {
             if (oponent.Health > 0.5 * Health)
+            {
                 Console.WriteLine("Goblin died of fear");
+                Health = 0;
+            }
             else
                 oponent.Health -= AttackDamage;
         }
